@@ -5,8 +5,6 @@ botaoAdicionar.addEventListener("click", function(event) {
     
     var form = document.querySelector("#form-adiciona");
     var paciente = obterInformacoesDoForm(form);
- 
-    var pacienteTr = montarTr(paciente);
 
     var erros = validarPaciente(paciente);
 
@@ -15,23 +13,26 @@ botaoAdicionar.addEventListener("click", function(event) {
         return;
     } 
     
-    var tabela = document.querySelector("#tabela-pacientes");
-    tabela.appendChild(pacienteTr);
+    adicionarPacienteNaTabela(paciente);
 
     form.reset();
     document.querySelector("#mensagens-erros").innerHTML = "";
 });
 
+function adicionarPacienteNaTabela(paciente) {
+    var pacienteTr = montarTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
+}
+
 function obterInformacoesDoForm(form) {
-    var paciente = {
+    return {
         nome: form.nome.value,
         peso: form.peso.value,
         altura: form.altura.value,
         gordura: form.gordura.value,
         imc: calcularImc(form.peso.value, form.altura.value)
-    }
-
-    return paciente;
+    };
 }
 
 function montarTr(paciente) {
@@ -59,19 +60,19 @@ function validarPaciente(paciente) {
 
     var erros = [];
 
-    if (paciente.nome.length == 0) {            
+    if (paciente.nome.length === 0) {
         erros.push("O campo nome não pode estar vazio!");
     }
 
-    if (paciente.gordura.length == 0) {            
+    if (paciente.gordura.length === 0) {
         erros.push("O campo gordura não pode estar vazio!");
     }
 
-    if (paciente.peso.length == 0) {            
+    if (paciente.peso.length === 0) {
         erros.push("O campo peso não pode estar vazio!");
     }
 
-    if (paciente.altura.length == 0) {            
+    if (paciente.altura.length === 0) {
         erros.push("O campo altura não pode estar vazio!");
     }
 
