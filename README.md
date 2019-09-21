@@ -1,8 +1,7 @@
-# javascript-beginner-client-list-imc
-Aplicação que manipula uma tabela HTML simples com Javascript.
+# javascript-crud-example
+Exemplo de CRUD utilizando Javascript puro.
 
 ### Features
-
 - Inclusão de novos itens na tabela via ```<form>``` com validação;
 - Inclusão de novos itens na tabela via requisição AJAX e JSON;
 - Remoção de itens da tabela;
